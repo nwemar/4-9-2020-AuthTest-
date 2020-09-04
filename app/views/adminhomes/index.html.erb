@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Home page for SuperAdmin, Supervisor and Student</h1>
+<h1 style="color:brown">Role is <%= Role.where(id: current_admin.roleid).pluck(:name).join(',') %></h1>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adminhomes.each do |adminhome| %>
+      <tr>
+        <td><%= link_to 'Show', adminhome %></td>
+        <td><%= link_to 'Edit', edit_adminhome_path(adminhome) %></td>
+        <td><%= link_to 'Destroy', adminhome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+Admin Logged in as <strong><%= current_admin.email %></strong>.
+<br>
+<%= link_to 'Edit profile', edit_admin_registration_path, :class => 'navbar-link' %>
+<br>
+<%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %>
+<br>
+<h2 style="color:red">Notice!</h2>
+<h3 style="color:blue">superadmin role support three link(superadmin, supervisor, student)</h3>
+<h3 style="color:green">supervisor role support two link(supervisor and student)</h3>
+<h3 style="color:yellow">student role support only student link </h3>
+<br>
+<%= link_to 'For superadmin', adminhomes_new_path %>
+<br>
+<%= link_to 'For supervisor', supervisor_index_path %>
+<br>
+<%= link_to 'For student', student_index_path %>
+
+

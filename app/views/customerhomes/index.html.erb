@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>I am customer</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customerhomes.each do |customerhome| %>
+      <tr>
+        <td><%= link_to 'Show', customerhome %></td>
+        <td><%= link_to 'Edit', edit_customerhome_path(customerhome) %></td>
+        <td><%= link_to 'Destroy', customerhome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+ Customer Logged in as <strong><%= current_customer.email %></strong>.
+ <br>
+  <%= link_to 'Customer Edit profile', edit_customer_registration_path, :class => 'navbar-link' %> 
+<br>
+  <%= link_to "Customer Logout", destroy_customer_session_path, method: :delete, :class => 'navbar-link'  %>
+<br>
+<%= link_to 'New Customerhome', new_customerhome_path %>

@@ -1,0 +1,3 @@
+class Adminhome < ApplicationRecord
+	
+end
